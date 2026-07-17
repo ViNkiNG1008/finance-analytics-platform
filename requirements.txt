@@ -1,0 +1,27 @@
+# --- Core data processing ---
+pandas>=2.2
+numpy>=1.26
+openpyxl>=3.1          # Excel read/write
+
+# --- Database ---
+SQLAlchemy>=2.0
+psycopg2-binary>=2.9
+python-dotenv>=1.0
+
+# --- Web app / dashboards ---
+streamlit>=1.38
+plotly>=5.22
+
+# --- Forecasting (optional, Phase 6) ---
+scikit-learn>=1.5
+
+# --- Smart categorization (optional) ---
+# openai>=1.40
+
+# --- Dev / testing ---
+pytest>=8.2
+black>=24.8
+reportlab==4.2.5
+openpyxl==3.1.5
+streamlit-authenticator>=0.4.0
+bcrypt>=4.0.0
