@@ -4,9 +4,12 @@ A multi-user, end-to-end pipeline that turns raw bank/UPI statements into an
 interactive expense-tracking dashboard, with auto-generated insights,
 forecasting, and exportable reports.
 
+**🔗 Live demo:** [fintrack-finatic.streamlit.app](https://fintrack-finatic.streamlit.app/)
+
 Statement (CSV/Excel) → Python ETL → Clean & Categorize → PostgreSQL → Streamlit (Plotly dashboards)
 
-![FinTrack architecture](architecture.png)
+![FinTrack architecture](architecture.svg)
+
 
 ## Features
 
@@ -33,6 +36,7 @@ Statement (CSV/Excel) → Python ETL → Clean & Categorize → PostgreSQL → S
 | Forecasting    | scikit-learn (linear regression)         |
 | BI (portfolio) | Power BI (standalone .pbix)              |
 | Testing        | pytest                                   |
+| Hosting        | Streamlit Community Cloud + Neon (serverless Postgres) |
 
 > Dashboards are built natively in Streamlit with Plotly rather than embedded
 > Power BI — this avoids the Power BI Embedded/Azure cost and keeps the whole
@@ -78,6 +82,27 @@ streamlit run streamlit_app/app.py
 
 On first run, go to the **Login** page and use **Sign Up** to create an account.
 
+## Deployment
+
+The live demo is deployed on **Streamlit Community Cloud**, backed by a
+**Neon** (serverless Postgres) database. To deploy your own copy:
+
+1. Push your fork to GitHub
+2. Create a [Neon](https://neon.tech) project and note the connection details
+3. On [Streamlit Community Cloud](https://streamlit.io/cloud), deploy with
+   main file path `streamlit_app/app.py`
+4. Under **Advanced settings → Secrets**, add:
+   ```toml
+   DB_HOST = "your-neon-host"
+   DB_PORT = "5432"
+   DB_NAME = "neondb"
+   DB_USER = "your-neon-user"
+   DB_PASSWORD = "your-neon-password"
+   APP_ENV = "production"
+   ```
+5. Run `run_schema.py` and `run_migration.py` once locally, pointed at the
+   Neon connection (via `.env`), to create the tables before first use
+
 ## Roadmap
 
 - [x] Phase 0: Project scaffolding
@@ -90,5 +115,6 @@ On first run, go to the **Login** page and use **Sign Up** to create an account.
 - [x] Reports: CSV/PDF/Excel export
 - [x] Multi-user authentication (signup/login, per-user data scoping)
 - [x] Premium dark-theme UI pass
+- [x] Deployment to Streamlit Community Cloud
 - [ ] Phase 3: ML-based categorization (currently rule-based)
-- [ ] Deployment to Streamlit Community Cloud
+- [ ] Architecture diagram
