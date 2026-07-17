@@ -49,30 +49,6 @@ scoped by `user_id`; dimension tables are shared across users.
 
 Sign convention: `amount` is positive for Income, negative for Expense.
 
-## Project Structure
-
-​```
-finance-analytics-platform/
-├── config/                   # settings & env loading
-├── data/
-│   ├── raw/                  # uploaded statements land here
-│   └── processed/            # cleaned intermediate files
-├── schema_migrations/        # incremental SQL migrations
-├── src/
-│   ├── auth/                 # registration, login, session helpers
-│   ├── etl/                  # extract, transform, categorize, load
-│   ├── db/                   # schema.sql, connection, queries
-│   ├── analytics/            # insights, forecasting, recurring-payment detection
-│   ├── reports/               # PDF/Excel export, report builder
-│   └── utils/                 # shared helpers
-├── streamlit_app/
-│   ├── app.py                 # entry point
-│   ├── components/            # shared theming (dark UI, sidebar brand, chart styling)
-│   └── pages/                 # Login, Upload, Dashboard, Transactions, Budget, Insights, Reports
-├── notebooks/                 # exploration / prototyping
-├── tests/                     # unit tests (ETL, recurring detection, reports)
-└── powerbi/                   # standalone .pbix (portfolio artifact)
-​```
 ## Setup
 
 ```bash
