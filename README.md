@@ -50,6 +50,8 @@ scoped by `user_id`; dimension tables are shared across users.
 Sign convention: `amount` is positive for Income, negative for Expense.
 
 ## Project Structure
+
+​```
 finance-analytics-platform/
 ├── config/                   # settings & env loading
 ├── data/
@@ -70,7 +72,7 @@ finance-analytics-platform/
 ├── notebooks/                 # exploration / prototyping
 ├── tests/                     # unit tests (ETL, recurring detection, reports)
 └── powerbi/                   # standalone .pbix (portfolio artifact)
-
+​```
 ## Setup
 
 ```bash
